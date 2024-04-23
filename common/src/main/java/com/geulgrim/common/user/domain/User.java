@@ -1,18 +1,25 @@
-package com.geulgrim.common.user.entity;
+package com.geulgrim.common.user.domain;
 
 
-import com.geulgrim.common.user.entity.enums.UserType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.EnumType.STRING;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
     private Long userId;
+    private String password;
     private String email;
     private String birthday;
     private String name;

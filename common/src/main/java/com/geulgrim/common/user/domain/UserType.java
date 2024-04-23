@@ -1,4 +1,4 @@
-package com.geulgrim.common.user.entity.enums;
+package com.geulgrim.common.user.domain;
 
 public enum UserType {
     INDIVIDUAL, ENTERPRISE
