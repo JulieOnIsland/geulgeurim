@@ -2,6 +2,7 @@ package com.geulgrim.auth.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -14,20 +15,22 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain enterpriseSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .httpBasic(config -> config.disable())
                 .csrf(config -> config.disable())
                 .cors(config -> config.disable())
                 .sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/api/v1/user/login","/api/v1/user/signup").permitAll()
                         .anyRequest().authenticated()
                 )
 
         ;
         return http.build();
     }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
