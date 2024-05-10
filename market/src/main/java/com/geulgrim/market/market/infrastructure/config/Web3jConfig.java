@@ -22,18 +22,14 @@ public class Web3jConfig {
         return Web3j.build(new HttpService(INFURA_API_URL));
     }
 
-    // Credentials 빈을 설정합니다. 이는 개인키를 통해 Ethereum 지갑에 접근합니다.
     @Bean
     public Credentials credentials() {
-        return Credentials.create("your_private_key"); //
+        return Credentials.create("YOUR_WALLET_PRIVATE_KEY");
     }
 
-    // StaticGasProvider를 통해 트랜잭션의 가스 가격과 한도를 설정합니다.
     @Bean
     public ContractGasProvider contractGasProvider() {
-        return new StaticGasProvider(
-                BigInteger.valueOf(22_000_000_000L), // 가스 가격 (Wei 단위)
-                BigInteger.valueOf(4_500_000));      // 가스 한도
+        return new StaticGasProvider(BigInteger.valueOf(20_000_000_000L), BigInteger.valueOf(4_300_000));
     }
 }
 
