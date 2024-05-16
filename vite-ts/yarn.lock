@@ -1626,6 +1626,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@openzeppelin/contracts@^4.9.6":
+  version "4.9.6"
+  resolved "https://registry.npmjs.org/@openzeppelin/contracts/-/contracts-4.9.6.tgz"
+  integrity sha512-xSmezSupL+y9VkHZJGDoCBpmnB2ogM13ccaYDWqJTfS3dbuHkgjuwDFUmaFauBCboQMGB/S5UqUl2y54X99BmA==
+
 "@pkgr/utils@^2.3.1":
   version "2.4.2"
   resolved "https://registry.npmjs.org/@pkgr/utils/-/utils-2.4.2.tgz"
@@ -3159,7 +3164,12 @@ comma-separated-tokens@^2.0.0:
   resolved "https://registry.npmjs.org/comma-separated-tokens/-/comma-separated-tokens-2.0.3.tgz"
   integrity sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==
 
-commander@^8.0.0:
+command-exists@^1.2.8:
+  version "1.2.9"
+  resolved "https://registry.npmjs.org/command-exists/-/command-exists-1.2.9.tgz"
+  integrity sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==
+
+commander@^8.0.0, commander@^8.1.0:
   version "8.3.0"
   resolved "https://registry.npmjs.org/commander/-/commander-8.3.0.tgz"
   integrity sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==
@@ -4071,7 +4081,7 @@ flatted@^3.2.9:
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.9.tgz"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
-follow-redirects@^1.15.0:
+follow-redirects@^1.12.1, follow-redirects@^1.15.0:
   version "1.15.3"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.3.tgz"
   integrity sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==
@@ -4912,6 +4922,11 @@ js-cookie@^3.0.5:
   resolved "https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.5.tgz"
   integrity sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==
 
+js-sha3@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/js-sha3/-/js-sha3-0.8.0.tgz"
+  integrity sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
@@ -5280,6 +5295,11 @@ memoize-one@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmjs.org/memoize-one/-/memoize-one-6.0.0.tgz"
   integrity sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==
+
+memorystream@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/memorystream/-/memorystream-0.3.1.tgz"
+  integrity sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==
 
 merge-stream@^2.0.0:
   version "2.0.0"
@@ -5831,6 +5851,11 @@ optionator@^0.9.1, optionator@^0.9.3:
     levn "^0.4.1"
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
+
+os-tmpdir@~1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/os-tmpdir/-/os-tmpdir-1.0.2.tgz"
+  integrity sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==
 
 p-limit@^3.0.2:
   version "3.1.0"
@@ -6556,6 +6581,11 @@ scrollparent@^2.1.0:
   resolved "https://registry.npmjs.org/scrollparent/-/scrollparent-2.1.0.tgz"
   integrity sha512-bnnvJL28/Rtz/kz2+4wpBjHzWoEzXhVg/TE8BeVGJHUqE8THNIRnDxDWMktwM+qahvlRdvlLdsQfYe+cuqfZeA==
 
+semver@^5.5.0:
+  version "5.7.2"
+  resolved "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz"
+  integrity sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==
+
 semver@^6.3.0:
   version "6.3.1"
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz"
@@ -6666,6 +6696,19 @@ slick-carousel@^1.8.1:
   version "1.8.1"
   resolved "https://registry.npmjs.org/slick-carousel/-/slick-carousel-1.8.1.tgz"
   integrity sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==
+
+solc@^0.8.19:
+  version "0.8.19"
+  resolved "https://registry.npmjs.org/solc/-/solc-0.8.19.tgz"
+  integrity sha512-yqurS3wzC4LdEvmMobODXqprV4MYJcVtinuxgrp61ac8K2zz40vXA0eSAskSHPgv8dQo7Nux39i3QBsHx4pqyA==
+  dependencies:
+    command-exists "^1.2.8"
+    commander "^8.1.0"
+    follow-redirects "^1.12.1"
+    js-sha3 "0.8.0"
+    memorystream "^0.3.1"
+    semver "^5.5.0"
+    tmp "0.0.33"
 
 sort-asc@^0.2.0:
   version "0.2.0"
@@ -6966,6 +7009,13 @@ titleize@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/titleize/-/titleize-3.0.0.tgz"
   integrity sha512-KxVu8EYHDPBdUYdKZdKtU2aj2XfEx9AfjXxE/Aj0vT06w2icA09Vus1rh6eSu1y01akYg6BjIK/hxyLJINoMLQ==
+
+tmp@0.0.33:
+  version "0.0.33"
+  resolved "https://registry.npmjs.org/tmp/-/tmp-0.0.33.tgz"
+  integrity sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==
+  dependencies:
+    os-tmpdir "~1.0.2"
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
