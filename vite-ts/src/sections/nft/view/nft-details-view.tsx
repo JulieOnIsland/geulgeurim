@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link/Link';
@@ -17,10 +19,15 @@ import Iconify from 'src/components/iconify';
 import Markdown from 'src/components/markdown';
 
 import Box from '@mui/material/Box';
-import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
+import Purchase from '../../../smart-contract/Puchase-contract/puchase';
+import { Web3 } from 'web3';
+import { web3 } from '../../../smart-contract/Puchase-contract/web3';
+import HDWalletProvider from '@truffle/hdwallet-provider';
+
+const [wallet_eth, setWallet_eth] = useState(0);
 
 // prettier-ignore
 function createDummyData(
@@ -101,6 +108,7 @@ export default function PostDetailsView({ id }: Props) {
 
   const navigate = useNavigate();
   const [marketDetails, setMarketDetails] = useState<MarketDetail | undefined>();
+  // var nftEvent = await new window.Web3.eth.Contract(account);
 
   useEffect(() => {
     console.log('Checking id:', id);
@@ -129,6 +137,128 @@ export default function PostDetailsView({ id }: Props) {
   const toProfile = () => {
     console.log(marketDetails.sellerId);
   };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = async () => {
+    setOpen(true);
+    try {
+      const currentProvider = detectCurrentProvider();
+      if (currentProvider) {
+        if (currentProvider !== window.ethereum) {
+          console.log(
+            "Non-Ethereum browser detected. You should consider trying MetaMask!"
+          );
+        }
+
+        // 메타마스크 연결
+        await currentProvider.request({ method: "eth_requestAccounts" });
+
+        const useWeb3 = new Web3(currentProvider);
+        const userAccount = await useWeb3.eth.getAccounts();
+        const account = userAccount[0];
+        let ethBalance = await useWeb3.eth.getBalance(account); // Get wallet balance
+        ethBalance = useWeb3.utils.fromWei(ethBalance, "ether"); //Convert balance to wei
+        setWallet_eth(ethBalance);
+        if (userAccount.length === 0) {
+          console.log("Please connect to meta mask");
+        } else {
+          console.log(ethBalance);
+        }
+      }
+    } catch (err) {
+      console.log(
+        "There was an error fetching your accounts. Make sure your Ethereum client is configured correctly."
+      );
+    }
+  };
+
+
+  const detectCurrentProvider = () => {
+    let provider;
+    if (window.ethereum) {
+      provider = window.ethereum;
+    } else if (window.web3) {
+      provider = window.Web3.currentProvider;
+    } else {
+      console.log(
+        "Non-Ethereum browser detected. You should consider trying MetaMask!"
+      );
+    }
+    return provider;
+  };
+
+  // async function onSubmit(data) {
+  //   alert("작품을 구매할까요?");
+  //
+  //   try {
+  //     const myIdx = localStorage.getItem("idx");
+  //
+  //     const accounts = await web3.eth.getAccounts();
+  //     setLoading(true);
+  //     setOpen(false);
+  //
+  //     const result = await campaignItem.methods.contribute().send({
+  //       from: accounts[0],
+  //       value: web3.utils.toWei(String(data.donation), "ether"),
+  //     });
+  //     setAmountInUSD(null);
+  //     reset("", {
+  //       keepValues: false,
+  //     });
+  //     setIsSubmitted(true);
+  //
+  //     await putDonation(
+  //       {
+  //         donationIdx: infos.donationIdx,
+  //         donAmount: web3.utils.toWei(String(data.donation), "ether"),
+  //       },
+  //       (response) => {
+  //         setComment(response.data.data);
+  //       },
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  //
+  //     await postPurchase(
+  //       {
+  //         donationIdx: infos.donationIdx,
+  //         myDonationAmount: web3.utils.toWei(String(data.donation), "ether"),
+  //         myDonationName: infos.donationName,
+  //         userIdx: localStorage.getItem("idx"),
+  //       },
+  //       (response) => {
+  //         console.log("성공", response);
+  //       },
+  //       (err) => {
+  //         console.log("postMyDonation 실패", err);
+  //       }
+  //     );
+  //
+  //     await putUserDonate(
+  //       {
+  //         userIdx: localStorage.getItem("idx"),
+  //         donateAmount: web3.utils.toWei(String(data.donation), "ether"),
+  //       },
+  //       (response) => {
+  //         console.log("유저 도네이트 갱신 성공", response);
+  //       },
+  //       (err) => {
+  //         console.log("유저 도네이트 갱신 실패", err);
+  //       }
+  //     );
+  //
+  //     alert("기부자님의 따뜻한 마음이 퍼져나갑니다.");
+  //     setLoading(false);
+  //     window.location.reload();
+  //   } catch (err) {
+  //     alert("스마트 컨트랙트 오류입니다. 기부금을 제대로 입력하셨나요?");
+  //     setError(err.message);
+  //     console.log(err);
+  //   }
+  // }
+
+
 
   return (
     <Container>
@@ -194,7 +324,7 @@ export default function PostDetailsView({ id }: Props) {
 
               </Box>
 
-              <Button variant="contained" fullWidth sx={{ mt: 'auto' }}>
+              <Button variant="contained" fullWidth sx={{ mt: 'auto' }} onClick={handleOpen}>
                 구매하기
               </Button>
             </Stack>
