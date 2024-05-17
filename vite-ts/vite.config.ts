@@ -2,6 +2,8 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import checker from 'vite-plugin-checker';
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 // ----------------------------------------------------------------------
 
@@ -17,6 +19,7 @@ export default defineConfig({
         initialIsOpen: false,
       },
     }),
+    nodePolyfills(),
   ],
   resolve: {
     alias: [
@@ -36,4 +39,18 @@ export default defineConfig({
   preview: {
     port: 3000,
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      // Node.js global to browser globalThis
+      define: {
+        global: 'globalThis'
+      },
+      // Enable esbuild polyfill plugins
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          buffer: true
+        })
+      ]
+    }
+  }
 });

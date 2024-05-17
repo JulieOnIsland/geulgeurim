@@ -1,5 +1,6 @@
 /* eslint-disable perfectionist/sort-imports */
 import 'src/global.css';
+import { ethers } from"ethers";
 
 // i18n
 import 'src/locales/i18n';
